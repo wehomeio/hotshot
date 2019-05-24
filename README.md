@@ -12,14 +12,13 @@ Make sure you've got a current node and yarn installed. Then:
     $ TARGET_HOST="https://www.innoq.com" yarn start
 
 ## Start (with Docker)
-
 Build image:
 
-    $ docker build -t innoq/hotshot .
+    $ docker build -t domscreen:latest .
 
 Start server:
 
-    $ docker run -p 5000:5000 -e PORT=5000 -e TARGET_HOST='https://www.innoq.com' innoq/hotshot
+    $ docker run -p 5000:5000 -e PORT=5000 -e TARGET_HOST='https://www.example.com' domscreen
 
 ## Request a screenshot:
 

@@ -18,12 +18,21 @@ if (!TARGET_HOST) {
   process.exit(1)
 }
 
-app.get('/', (req, res) => {
-  res.send('GET /shoot?path=…&selector=… to take a screenshot')
-})
+// app.get('/', (req, res) => {
+//   res.send('GET /shoot?path=…&selector=… to take a screenshot')
+// })
 
-app.get('/shoot', async (req, res) => {
-  const path = req.query.path
+app.get('/', async (req, res) => {
+  let pathArr = []
+  const {query} = req
+  for(let key in query) {
+    if(key !=='path' && key !=='selector') {
+      pathArr.push(`${key}=${query[key]}`)
+    }
+  }
+  let {path} = req.query
+  path = path+'?'+pathArr.join('&')
+
   const selector = req.query.selector
   const padding = parseInt(req.query.padding) || 0
 
